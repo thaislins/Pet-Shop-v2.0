@@ -109,7 +109,11 @@ int main() {
  					ConsultaAnimal(a1);
  					break;
  				case 4:
- 					RemoveAnimal(a1);
+ 					 int id;
+
+					cout << "Defina qual o id do animal que será removido: ";
+					cin >> id;
+ 					RemoveAnimal(a1,id);
  					break;
  				case 5:
  					RemoveFuncionario(f1);

@@ -1,10 +1,3 @@
-/**
- * @file	exportar.cpp
- * @brief	Exporta dados dos animais do pet shop para um arquivo
- * @author	Thais Fernandes Lins
- * @date	9/12/2016
- */
-
 #include <cstdlib>
 using std::exit;
 #include <cstring>
@@ -14,15 +7,7 @@ using std::exit;
 #define LIM_ANIM 5
 #define LIM_FUNC 4
 
-/** @brief Funcao principal */
 int main(int argc, char const *argv[]) {
-
-	if(argc == 1) {
- 		cerr << "As possíveis entradas são: " << endl;
- 		cerr << "./exportar_dinamico -c <classe> -v <veterinario> -t <tratador> <arquivo_saida>" << endl;
- 		cerr << "É necessário que pelo menos o <arquivo_saida> seja definido" << endl;
- 		return 0;
- 	}
 	
 	ifstream tipoclasse,petfera,funcionarios,tipofunc;
 	funcionarios.open("funcionarios");
@@ -34,9 +19,10 @@ int main(int argc, char const *argv[]) {
 	map<int, Funcionario*> f1;
 
 	try {
-		if(!funcionarios || !petfera || !tipoclasse || !tipofunc)
-			throw FileNotFound();
-	} catch (FileNotFound &ex) {
+	if(!funcionarios || !petfera || !tipoclasse || !tipofunc)
+		throw FileNotFound();
+	} 
+	catch (FileNotFound &ex) {
 		std::cerr << ex.what() << std::endl;
 		exit(1);
 	}
@@ -78,7 +64,9 @@ int main(int argc, char const *argv[]) {
 
  	string classe = " ", vet = " ", trat = " ", nomearquivo = " ";
 
+ 	 //strcmp(items[n], "ae") == 0
  	for (int i = 0; i < argc; i++) {
+ 		
  		if(strcmp(argv[i], "-c") == 0)
  			classe = argv[i+1];
  		else if (strcmp(argv[i], "-v") == 0)
@@ -90,7 +78,7 @@ int main(int argc, char const *argv[]) {
  	nomearquivo = argv[argc-1];
 
  	ofstream exportar; 
- 	exportar.open(nomearquivo.c_str());
+ 	exportar.open(nomearquivo);
 
  	std::map<int, Animal*>::iterator it;
 

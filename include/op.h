@@ -26,58 +26,65 @@ using std::vector;
 
 /**
  * @brief 		 Realiza o cadastro de animais 
- * @param a 	 map que armazena objetos do tipo "Animal*"
- * @param f 	 map que armazena objetos do tipo "Funcionario*"			 
+ * @param a 	 Lista simplesmente encadeada que armazena 
+ *				 objetos do tipo "Animal*" 
  * @param classe Classe de animais
  * @param is 	 Arquivo que contém informações sobre dados cadastrais
- * @param x 	 Id do animal
+ * @param x 	 Posição
  * @param nome 	 Nome do animal
  */
 void CadastroAnimal(map<int, Animal*> &a, map<int, Funcionario*> &f, string classe, ifstream &is, int x, string nome);
 
 /**
  * @brief 		 Realiza o cadastro de funcionários
- * @param f 	 map que armazena objetos do tipo "Funcionario*" 
+ * @param func 	 Lista simplesmente encadeada que armazena 
+ *				 objetos do tipo "Funcionario*" 
  * @param tipo	 Função do funcionário
  * @param is 	 Arquivo que contém informações sobre dados cadastrais
- * @param x 	 Id do funcioário
+ * @param x 	 Posição
  */
 void CadastroFuncionario(map<int, Funcionario*> &f, string tipo, ifstream &is, int x);
 
 /**
  * @brief 		 Realiza a consulta dos dados dos animais
- * @param a 	 map que armazena objetos do tipo "Animal*" 
+ * @param a 	 Lista simplesmente encadeada que armazena 
+ *				 objetos do tipo "Animal*" 
  */
 void ConsultaAnimal(map<int, Animal*> &a);
 
 /**
  * @brief 		 Realiza a consulta dos dados dos funcionários
- * @param f 	 map que armazena objetos do tipo "Funcionario*" 
+ * @param func 	 Lista simplesmente encadeada que armazena 
+ *				 objetos do tipo "Funcionário*" 
  */
 void ConsultaFuncionario(map<int, Funcionario*> &f);
 
 /**
  * @brief 		 Realiza a remoção dos dados do animal
- * @param a 	 map que armazena objetos do tipo "Animal*" 
+ * @param a 	 Lista simplesmente encadeada que armazena 
+ *				 objetos do tipo "Animal*" 
  */
-void RemoveAnimal(map<int, Animal*> &a);
+void RemoveAnimal(map<int, Animal*> &a, int id);
 
 /**
  * @brief 		 Realiza a remoção dos dados dos funcionários
- * @param f 	 map que armazena objetos do tipo"Funcionario*" 
+ * @param func 	 Lista simplesmente encadeada que armazena 
+ *				 objetos do tipo "Funcionário*" 
  */
 void RemoveFuncionario(map<int, Funcionario*> &f);
 
 /**
  * @brief 		 Realiza a alteração dos dados dos funcionários
- * @param a 	 map que armazena objetos do tipo "Animal*"
+ * @param a 	 Lista simplesmente encadeada que armazena 
+ *				 objetos do tipo "Animal*" 
  */
 void AlteraAnimal(map<int, Animal*> &a);
 
 /**
  * @brief 		 Realiza a consulta de dados por responsabilidade
  * 				 de um veterinário ou tratador
- * @param a 	 map que armazena objetos do tipo "Animal*" 
+ * @param a 	 Lista simplesmente encadeada que armazena 
+ *				 objetos do tipo "Animal*" 
  */
 void ConsultaVetOuTrat(map<int, Animal*> &a);
 
