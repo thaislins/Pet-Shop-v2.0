@@ -9,8 +9,8 @@
 
 
 #include "../include/animal.h"
-
 #define LIM_VET 2
+
 
 /**
  * @details	Este construtor define os valores iniciais

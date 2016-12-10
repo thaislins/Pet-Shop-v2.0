@@ -14,14 +14,13 @@
 
 /**
  * @brief 		 Realiza o cadastro de animais 
- * @param a 	 Lista simplesmente encadeada que armazena 
- *				 objetos do tipo "Animal*" 
+ * @param a 	 map que armazena objetos do tipo "Animal*"
+ * @param f 	 map que armazena objetos do tipo "Funcionario*"			 
  * @param classe Classe de animais
  * @param is 	 Arquivo que contém informações sobre dados cadastrais
- * @param x 	 Posição
+ * @param x 	 Id do animal
  * @param nome 	 Nome do animal
  */
-
 void CadastroAnimal(map<int, Animal*> &a, map<int, Funcionario*> &f, string classe, ifstream &is, int x, string nome) {
 
 	Animal *a1;
@@ -74,7 +73,13 @@ void CadastroAnimal(map<int, Animal*> &a, map<int, Funcionario*> &f, string clas
 	}
 }
 
-
+/**
+ * @brief 		 Realiza o cadastro de funcionários
+ * @param f 	 map que armazena objetos do tipo "Funcionario*" 
+ * @param tipo	 Função do funcionário
+ * @param is 	 Arquivo que contém informações sobre dados cadastrais
+ * @param x 	 Id do funcioário
+ */
 void CadastroFuncionario(map<int, Funcionario*> &f, string tipo, ifstream &is, int x) {
 
 	Funcionario* f1;
@@ -98,7 +103,10 @@ void CadastroFuncionario(map<int, Funcionario*> &f, string tipo, ifstream &is, i
 	}
 }
 
-
+/**
+ * @brief 		 Realiza a consulta dos dados dos animais
+ * @param a 	 map que armazena objetos do tipo "Animal*" 
+ */
 void ConsultaAnimal(map<int, Animal*> &a) {
 
 	int id;
@@ -119,7 +127,10 @@ void ConsultaAnimal(map<int, Animal*> &a) {
 	}
 }
 
-
+/**
+ * @brief 		 Realiza a consulta dos dados dos funcionários
+ * @param f 	 map que armazena objetos do tipo "Funcionario*" 
+ */
 void ConsultaFuncionario(map<int, Funcionario*> &f) {
 
 	int id;
@@ -141,7 +152,16 @@ void ConsultaFuncionario(map<int, Funcionario*> &f) {
 	} 
 }
 
-void RemoveAnimal(map<int, Animal*> &a, int id) {
+/**
+ * @brief 		 Realiza a remoção dos dados do animal
+ * @param a 	 map que armazena objetos do tipo "Animal*" 
+ */
+void RemoveAnimal(map<int, Animal*> &a) {
+
+	int id;
+
+	cout << "Defina qual o id do animal que será removido: ";
+	cin >> id;
 
 	map<int, Animal*>::iterator busca = a.find(id);
 
@@ -158,6 +178,10 @@ void RemoveAnimal(map<int, Animal*> &a, int id) {
 	}
 }
 
+/**
+ * @brief 		 Realiza a remoção dos dados dos funcionários
+ * @param f 	 map que armazena objetos do tipo"Funcionario*" 
+ */
 void RemoveFuncionario(map<int, Funcionario*> &f) {
 
 	int id;
@@ -180,10 +204,15 @@ void RemoveFuncionario(map<int, Funcionario*> &f) {
 	}
 }
 
+/**
+ * @brief 		 Realiza a alteração dos dados dos funcionários
+ * @param a 	 map que armazena objetos do tipo "Animal*"
+ */
 void AlteraAnimal(map<int, Animal*> &a) {
 
-	/*int id;
-	string classe;
+	int id;
+	double tamanho;
+	string dieta, nomebatismo;
 
 	cout << "Defina qual o id do animal que se deseja alterar dados: ";
 	cin >> id;
@@ -192,17 +221,180 @@ void AlteraAnimal(map<int, Animal*> &a) {
 	if (busca != a.end()){
 		cout << "Estes são os dados do animal: ";
 		cout << (*a[id]);
-		//i = 1;
 	}
 	else{
 		cout << "ID inválido" << endl;	
 	}
 
-	classe = busca->second->getClasse();
-	cout << classe << endl;*/
+	cout << endl << "Realize a alteração dos dados: " << endl;
+	cout << "Obs: somente alguns dados podem ser alterados " << endl << endl;
 
+	if (busca->second->getClasse() == "Amphibia") {
+
+		Anfibio* m = new Sapo;
+
+		int totalmudas;
+		string ultimamuda;
+
+		m->setId(busca->second->getId());
+		m->setClasse(busca->second->getClasse());
+		m->setNome(busca->second->getNome());
+		m->setCientifico(busca->second->getCientifico());
+		m->setSexo(busca->second->getSexo());
+		m->setVeterinario(busca->second->getVeterinario());
+		m->setTratador(busca->second->getTratador());
+		m->setBatismo(busca->second->getBatismo());
+		cout << "Tamanho médio em metros: ";
+		cin >> tamanho;
+		m->setTamanho(tamanho);
+		cout << "Dieta do animal: ";
+		cin >> dieta;
+		m->setDieta(dieta);
+		cout << "Total de mudas: ";
+		cin >> totalmudas;
+		m->setTotalMudas(totalmudas);
+		cout << "Data da ultima muda: ";
+		cin >> ultimamuda;
+		m->setUltimaMuda(ultimamuda);
+
+		a.at(busca->second->getId()) = m;
+	}
+
+	else if (busca->second->getClasse() == "Mammalia") {
+
+		Mamifero* m = new Leao;
+
+		string cor_pelo;
+
+		m->setId(busca->second->getId());
+		m->setClasse(busca->second->getClasse());
+		m->setNome(busca->second->getNome());
+		m->setCientifico(busca->second->getCientifico());
+		m->setSexo(busca->second->getSexo());
+		m->setVeterinario(busca->second->getVeterinario());
+		m->setTratador(busca->second->getTratador());
+		m->setBatismo(busca->second->getBatismo());
+		cout << "Tamanho médio em metros: ";
+		cin >> tamanho;
+		m->setTamanho(tamanho);
+		cout << "Dieta do animal: ";
+		cin >> dieta;
+		m->setDieta(dieta);
+		cout << "Cor do pelo do animal: ";
+		cin >> cor_pelo;
+		m->setCorPelo(cor_pelo);
+
+		a.at(busca->second->getId()) = m;
+	}
+	else if (busca->second->getClasse() == "Reptilia") {
+
+		Reptil* m = new Tartaruga;
+
+		bool venenoso;
+		string tipo_veneno;
+
+		m->setId(busca->second->getId());
+		m->setClasse(busca->second->getClasse());
+		m->setNome(busca->second->getNome());
+		m->setCientifico(busca->second->getCientifico());
+		m->setSexo(busca->second->getSexo());
+		m->setVeterinario(busca->second->getVeterinario());
+		m->setTratador(busca->second->getTratador());
+		m->setBatismo(busca->second->getBatismo());
+		cout << "Tamanho médio em metros: ";
+		cin >> tamanho;
+		m->setTamanho(tamanho);
+		cout << "Dieta do animal: ";
+		cin >> dieta;
+		m->setDieta(dieta);
+		cout << "Venenoso: ";
+		cin >> venenoso;
+		m->setVenenoso(venenoso);
+		if(venenoso == 1) {
+			cout << "Tipo de veneno: ";
+			cin >> tipo_veneno;
+			m->setTipoVeneno(tipo_veneno);
+		}
+
+		a.at(busca->second->getId()) = m;
+	}
+	else {
+
+		if (busca->second->getNome() == "Papagaio") {
+			Papagaio* m = new Papagaio;
+
+			int bico,envergadura;
+			string ibama, origem,autorizacao;
+
+			m->setId(busca->second->getId());
+			m->setClasse(busca->second->getClasse());
+			m->setNome(busca->second->getNome());
+			m->setCientifico(busca->second->getCientifico());
+			m->setSexo(busca->second->getSexo());
+			m->setVeterinario(busca->second->getVeterinario());
+			m->setTratador(busca->second->getTratador());
+			m->setBatismo(busca->second->getBatismo());
+			cout << "Tamanho médio em metros: ";
+			cin >> tamanho;
+			m->setTamanho(tamanho);
+			cout << "Dieta do animal: ";
+			cin >> dieta;
+			m->setDieta(dieta);
+			cout << "Tamanho do bico: ";
+			cin >> bico;
+			m->setTamanhoBico(bico);
+			cout << "Envergadura: ";
+			cin >> envergadura;
+			m->setEnvergadura(envergadura);
+			cout << "Situação do animal no IBAMA: ";
+			cin >> ibama;
+			m->setIbama(ibama);
+			cout << "Status de autorização do animal: ";
+			cin >> autorizacao;
+			m->setAutorizacao(autorizacao);
+
+			a.at(busca->second->getId()) = m;
+		}
+		else {
+			Tucano* m = new Tucano;
+
+			int bico,envergadura;
+			string ibama;
+
+			m->setId(busca->second->getId());
+			m->setClasse(busca->second->getClasse());
+			m->setNome(busca->second->getNome());
+			m->setCientifico(busca->second->getCientifico());
+			m->setSexo(busca->second->getSexo());
+			m->setVeterinario(busca->second->getVeterinario());
+			m->setTratador(busca->second->getTratador());
+			m->setBatismo(busca->second->getBatismo());
+			cout << "Tamanho médio em metros: ";
+			cin >> tamanho;
+			m->setTamanho(tamanho);
+			cout << "Dieta do animal: ";
+			cin >> dieta;
+			m->setDieta(dieta);
+			cout << "Tamanho do bico: ";
+			cin >> bico;
+			m->setTamanhoBico(bico);
+			cout << "Envergadura: ";
+			cin >> envergadura;
+			m->setEnvergadura(envergadura);
+			cout << "Situação do animal no IBAMA: ";
+			cin >> ibama;
+			m->setIbama(ibama);
+
+			a.at(busca->second->getId()) = m;
+		}
+	}
 }
 
+/**
+ * @brief 		 Realiza a consulta de dados por responsabilidade
+ * 				 de um veterinário ou tratador
+ * @param a 	 map que armazena objetos do tipo "Animal*" 
+ */
 void ConsultaVetOuTrat(map<int, Animal*> &a) {
 
 	string func;

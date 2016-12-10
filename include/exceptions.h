@@ -17,26 +17,26 @@
  */
 class FileNotFound : public std::exception {
 	public:
-		const char* what() {
-		return "O arquivo não foi encontrado\nO programa será encerrado";
-		}
+	 	const char* what() {
+	 		return "O arquivo não foi encontrado\nO programa será encerrado";
+	}
 };
 
 /** 
- * @class 	InputError exceptions.h
- * @brief 	Classe que realiza tratamento de erros de entrada
- */
+* @class 	InputError exceptions.h
+* @brief 	Classe que realiza tratamento de erros de entrada
+*/
 class InputError : public std::exception {
 	public:
 		const char* what() {
-			return "Entrada Inválida";
-		}
+	 		return "Entrada Inválida";
+	}
 };
 
 /** 
- * @class 	ValueLimit exceptions.h
- * @brief 	Classe que realiza tratamento de erros de argumentos inválidos
- */
+* @class 	ValueLimit exceptions.h
+* @brief 	Classe que realiza tratamento de erros de argumentos inválidos
+*/
 class InvalidID : public std::invalid_argument {
 	public:
 		InvalidID() : std::invalid_argument("Operacao invalida: Id não foi encontrado") {}
